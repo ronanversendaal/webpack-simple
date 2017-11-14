@@ -9,27 +9,27 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
-    "vue": "^2.5.2",
+    "vue": "^2.5.3",
     "bootstrap": "^4.0.0-beta.2",
-    "bootstrap-vue": "^1.0.0-beta.9",
-    "popper.js": "^1.12.6"
+    "bootstrap-vue": "^1.0.2",
+    "popper.js": "^1.12.7"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^6.0.0",
-    "babel-preset-env": "^1.6.0",
-    "cross-env": "^5.0.5",
+    "babel-preset-env": "^1.6.1",
+    "cross-env": "^5.1.1",
     "css-loader": "^0.28.7",
-    "extract-text-webpack-plugin": "^3.0.0",
-    "file-loader": "^0.11.2",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^1.1.5",
     {{#sass}}
-    "node-sass": "^4.5.3",
+    "node-sass": "^4.6.1",
     "sass-loader": "^6.0.6",
     {{/sass}}
-    "style-loader": "^0.18.2",
-    "vue-loader": "^13.0.5",
-    "vue-template-compiler": "^2.4.4",
-    "webpack": "^3.6.0",
-    "webpack-dev-server": "^2.8.2"
+    "style-loader": "^0.19.0",
+    "vue-loader": "^13.5.0",
+    "vue-template-compiler": "^2.5.3",
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.4"
   }
 }
