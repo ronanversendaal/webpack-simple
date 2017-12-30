@@ -9,6 +9,7 @@ var jPM = {},
 var PLUGINS_LOCALPATH = './assets/plugins/';
 var loadedFiles = [];
 
+
 (function($) {
   $.extend($.fn, {
 
@@ -60,15 +61,12 @@ var loadedFiles = [];
     // Refresh scripts after ajax calls
     // ===============================================================
     themeRefresh: function() {
-      // var context = $(this);
-      // if (typeof context.context === "undefined" || context.context === null) {
-      //   context.context = context;
-      // }
+      var context = $(this);
+      if (typeof context.context === "undefined" || context.context === null) {
+        context.context = context;
+      }
 
-      // context.themeInit(true);
-      // if (typeof jQuery.fn.waypoint !== 'undefined') {
-      //   Waypoint.refreshAll();
-      // }
+      context.themeInit(true);
     },
 
     // ===============================================================
@@ -195,60 +193,6 @@ var loadedFiles = [];
           setTimeout(function() {
             doFullHeights();
           }, 400);
-        });
-      }
-
-      // ----------------------------------------------------------------
-      // Animated scroll elements
-      // ----------------------------------------------------------------
-      var elementsAnimated = context.find('[data-animate]');
-      if (elementsAnimated.length > 0) {
-        var initElementsAnimated = function() {
-          elementsAnimated.each(function() {
-            var $element = jQuery(this),
-              animateClass = $element.data('animate'),
-              animateInfinite = $element.data('animate-infinite') || null,
-              animateDelay = $element.data('animate-delay') || null,
-              animateDuration = $element.data('animate-duration') || null,
-              animateOffset = $element.data('animate-offset') || '98%';
-
-            // Infinite
-            if (animateInfinite !== null) {
-              $element.addClass('infinite');
-            }
-
-            // Delays & durations
-            if (animateDelay !== null) {
-              $element.css({
-                '-webkit-animation-delay': animateDelay + 's',
-                '-moz-animation-delay': animateDelay + 's',
-                'animation-delay': animateDelay + 's'
-              });
-            }
-            if (animateDuration !== null) {
-              $element.css({
-                '-webkit-animation-duration': animateDuration + 's',
-                '-moz-animation-duration': animateDuration + 's',
-                'animation-duration': animateDuration + 's'
-              });
-            }
-
-            // $element.waypoint(function() {
-            //   $element.addClass('animated ' + animateClass).one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
-            //     $element.addClass('animated-done');
-            //     $element.removeClass(animateClass);
-            //   });
-            //   this.destroy();
-            // }, {
-            //   offset: animateOffset,
-            // });
-          });
-        };
-
-        $document.includeWaypoints(function() {
-          // $document.themeLoadPlugin([], ["https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"], function() {
-          //   $document.isPageLoaderDone(initElementsAnimated);
-          // });
         });
       }
 
@@ -548,26 +492,6 @@ var loadedFiles = [];
         });
       }
 
-      // ----------------------------------------------------------------
-      // colour switch - demo only
-      // ----------------------------------------------------------------
-      var defaultColour = $('body').data('colour-scheme') || 'green';
-      var colourSchemes = context.find('.theme-colours a');
-      colourSchemes.removeClass('active');
-      colourSchemes.filter('.' + defaultColour).addClass('active');
-      colourSchemes.click(function() {
-        var $this = $(this);
-        var c = $this.attr('href').replace('#', '');
-        var cacheBuster = 3 * Math.floor(Math.random() * 6);
-        $('.theme-colours a').removeClass('active');
-        $('.theme-colours a.' + c).addClass('active');
-
-        if (c !== defaultColour) {
-          context.find('#colour-scheme').attr('href', 'assets/css/colour-' + c + '.css?x=' + cacheBuster);
-        } else {
-          context.find('#colour-scheme').attr('href', '#');
-        }
-      });
 
       // ----------------------------------------------------------------
       // IE placeholders
@@ -603,21 +527,8 @@ var loadedFiles = [];
           progressBarsAnimated.each(function() {
             var $progress = jQuery(this);
             var currentStyles = $progress.attr("style") || '';
-
-            // $progress.waypoint(function() {
-            //   currentStyles += 'width: ' + $progress.attr("aria-valuenow") + '% !important;';
-            //   $progress.attr("style", currentStyles).addClass('progress-bar-animated-progress');
-            //   this.destroy();
-            // }, {
-            //   offset: '98%'
-            // });
           });
         };
-
-        // $document.includeWaypoints(function() {
-        //   progressBarsAnimated.css("width", 0);
-        //   $document.isPageLoaderDone(initProgressBarsAnimated);
-        // });
       }
 
       // ----------------------------------------------------------------
@@ -898,37 +809,6 @@ var loadedFiles = [];
           triggerCallback();
         }
       }, 500);
-    },
-
-    // ----------------------------------------------------------------
-    // Plugin: Waypoints
-    // @see: http://imakewebthings.com/waypoints/
-    // Used as helper for other functions so not called direct
-    // ----------------------------------------------------------------
-    includeWaypoints: function(callback) {
-      // if (typeof jQuery.fn.waypoint === 'undefined') {
-      //   $document.themeLoadPlugin(['https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js'], []);
-      //   var tries = 0;
-      //   var isWaypointsDoneTimer = setInterval(function() {
-      //     if (typeof jQuery.fn.waypoint === 'function') {
-      //       clearInterval(isWaypointsDoneTimer);
-
-      //       if (callback && typeof(callback) === "function") {
-      //         callback();
-      //       }
-      //     }
-      //     tries++;
-
-      //     if (tries > 20) {
-      //       clearInterval(isWaypointsDoneTimer);
-      //       alert('Error: Waypoints plugin could not be loaded');
-      //     }
-      //   }, 500);
-      // } else {
-      //   if (callback && typeof(callback) === "function") {
-      //     callback();
-      //   }
-      // }
     },
 
     // ----------------------------------------------------------------
@@ -1224,46 +1104,6 @@ var loadedFiles = [];
           }
         },
 
-        themePluginCountTo: function() {
-          // ----------------------------------------------------------------
-          // Count To (counters)
-          // @see: https://github.com/mattboldt/typed.js
-          // ----------------------------------------------------------------
-          var $countTos = context.find('[data-toggle="count-to"]');
-          if ($countTos.length > 0) {
-            var themePluginCountToInit = function() {
-              $countTos.each(function() {
-                var $this = $(this),
-                  delay = $this.data('delay') || 0;
-                $this.waypoint(function() {
-                  setTimeout(function() {
-                    $this.countTo({
-                      onComplete: function() {
-                        $this.addClass('count-to-done');
-                      },
-                      formatter: function(value, options) {
-                        var v = value.toFixed(options.decimals);
-                        if (v == '-0') {
-                          v = '0';
-                        }
-                        return v;
-                      },
-                    });
-                  }, delay);
-                  this.destroy();
-                }, {
-                  offset: '90%',
-                });
-              });
-            };
-            $document.themeLoadPlugin(["https://cdnjs.cloudflare.com/ajax/libs/jquery-countto/1.2.0/jquery.countTo.min.js"], [], function() {
-              // $document.includeWaypoints(function() {
-              //   $document.isPageLoaderDone(themePluginCountToInit);
-              // });
-            });
-          }
-        },
-
         themePluginTyped: function() {
           // ----------------------------------------------------------------
           // typed.js - typewriter effect
@@ -1290,22 +1130,11 @@ var loadedFiles = [];
                   if (typeof typedStrings === 'object') {
                     typedSettings.strings = typedStrings;
                   }
-                  $this.waypoint(function() {
-                    setTimeout(function() {
-                      $this.typeIt(typedSettings);
-                    }, typedDelay);
-                    this.destroy();
-                  }, {
-                    offset: '100%',
-                  });
                 }
               });
             };
 
             $document.themeLoadPlugin(["https://cdn.jsdelivr.net/jquery.typeit/4.4.0/typeit.min.js"], [], function() {
-              // $document.includeWaypoints(function() {
-              //   $document.isPageLoaderDone(themePluginTypedInit);
-              // });
             });
           }
         },
@@ -2131,7 +1960,7 @@ var loadedFiles = [];
                     lightboxDelegate: '.cbp-lightbox',
                     lightboxGallery: true,
                     lightboxTitleSrc: 'data-title',
-                    lightboxCounter: '<div class="cbp-popup-lightbox-counter">{{current}} of {{total}}</div>',
+                    lightboxCounter: '<div class="cbp-popup-lightbox-counter"> of </div>',
 
                     // singlePageInline
                     singlePageInlinePosition: 'top',
