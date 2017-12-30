@@ -3,7 +3,7 @@
     <div class="bg-primary">
       <div class="bg-white overlay overlay-primary overlay-op-7 text-center px-3 py-5 py-lg-10 flex-valign">
         <h2 class="display-4 text-white">
-          webpack-test
+          {{ name }}
         </h2>
         <h3 class="text-grey font-weight-normal my-4">
           Create something <span class="font-weight-bold">awesome!</span>
