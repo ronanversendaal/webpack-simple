@@ -87,8 +87,9 @@
 // -------------------------------------------
 // Your custom style
 // -------------------------------------------
-// use the custom/_custom-style.scss file to
+// use the custom-style.scss file to
 // add you custom CSS code or include new files
 // below.
 // -------------------------------------------
-// @import "custom/custom-style.scss";
+@import "custom-style.scss";
+
