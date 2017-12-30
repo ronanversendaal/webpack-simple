@@ -9,7 +9,7 @@ This is a project template for [vue-cli](https://github.com/vuejs/vue-cli).
 
 ```bash
 npm install -g vue-cli
-vue init bootstrap-vue/webpack-simple my-project
+vue init ronanversendaal/webpack-simple my-project
 cd my-project
 npm install
 npm run dev
@@ -18,6 +18,8 @@ npm run dev
 ### What's Included
 
 - `npm run dev`: Webpack + `vue-loader` with proper config for source maps & hot-reload.
+
+- Starting theme
 
 - `npm run build`: build with HTML/CSS/JS minification.
 
