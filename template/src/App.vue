@@ -4,7 +4,7 @@
       <!-- Image Banner: Use the the data-bg-img functionality to create a simple image banner Use spacer classes to make the banner larger with padding, allows for easy responsive changes too see: elements-ctas.htm To make the banner full height/screen add the attributes: data-toggle="full-height" data-offset="#header" -->
       <div class="bg-white overlay overlay-primary overlay-op-7 text-center px-3 py-5 py-lg-10 flex-valign" data-css='{"background-position": "right bottom"}' data-toggle="full-height">
         <h2 class="display-4 text-white">
-          {{ name }}
+          webpack-test
         </h2>
         <h3 class="text-grey font-weight-normal my-4">
           Create something <span class="font-weight-bold">awesome!</span>
